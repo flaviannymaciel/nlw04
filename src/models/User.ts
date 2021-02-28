@@ -1,10 +1,8 @@
 // criar entidade para salvar no banco
-
 import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from 'uuid';
 
-@Entity('users')
-
+@Entity("users")
 class User {
 
   @PrimaryColumn()
@@ -17,13 +15,13 @@ class User {
   email: string;
 
   @CreateDateColumn()
-  created_at: Date
+  created_at: Date;
 
   constructor() {
-    if(!this.id) {
-      this.id = uuid();
+    if (!this.id) {
+      this.id  = uuid();
     }
   }
 }
 
-export { User }
+export { User };
