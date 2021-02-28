@@ -1,14 +1,15 @@
 // onde ficam as regras e server o chama (com isso server menos poluido)
+// alt + shift + o apagar imports não utilizados
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
-import { User } from '../models/User';
+import { getCustomRepository } from 'typeorm';
+import { UsersRepository } from '../repositories/UsersRepository';
 
 class UserController {
   async create (req: Request, res: Response) {
     const { name, email } = req.body;
 
     // repositorio permite manipulação de dados (cada entidade possui repositorio especifico)
-    const usersRepository = getRepository(User);
+    const usersRepository = getCustomRepository(UsersRepository);
     // SELECT * FROM USERS WHERE EMAIL = 'EMAIL'
     const   userAlreadyExist = usersRepository.findOne({
       email
